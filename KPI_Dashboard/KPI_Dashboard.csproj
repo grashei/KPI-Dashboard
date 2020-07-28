@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="NewFolder\**" />
+    <Compile Remove="Scripts\**" />
+    <Compile Remove="Views\HelloWorld\**" />
+    <Content Remove="NewFolder\**" />
+    <Content Remove="Scripts\**" />
+    <Content Remove="Views\HelloWorld\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <EmbeddedResource Remove="Scripts\**" />
+    <EmbeddedResource Remove="Views\HelloWorld\**" />
+    <None Remove="NewFolder\**" />
+    <None Remove="Scripts\**" />
+    <None Remove="Views\HelloWorld\**" />
+    <Compile Remove="Models\DataBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\HelloWorldController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Settings\Create.cshtml" />
+    <Content Remove="Views\Settings\Delete.cshtml" />
+    <Content Remove="Views\Settings\Details.cshtml" />
+    <Content Remove="Views\Settings\Edit.cshtml" />
+    <Content Remove="wwwroot\css\Dashboards.cs" />
+    <Content Remove="wwwroot\favicon.ico.old" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="settings.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+
+</Project>

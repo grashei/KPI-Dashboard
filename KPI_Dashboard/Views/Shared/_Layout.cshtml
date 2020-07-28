@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - KPI Dashboard</title>
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/nav.css" asp-append-version="true" />
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="top-bar top-bar-1">
+            <div class="img-logo top-bar-element">
+                <a href="/Dashboards">
+                    <img src="~/images/ludofact.png" height="50">
+                </a>
+            </div>
+        </div>
+
+        <div class="top-bar top-bar-2">
+            <div class="heading">
+                @RenderSection("Heading", required: false)
+            </div>
+        </div>
+
+        <div class="top-bar top-bar-3">
+            <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+        </div>
+
+        <div class="top-bar top-bar-4">
+            @RenderSection("Settings", required: false)
+        </div>
+
+    </nav>
+
+    <div class="container-fluid body-content">
+        @RenderBody()
+        <footer></footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/nav.js" type="text/javascript" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

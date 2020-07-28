@@ -1,0 +1,69 @@
+﻿@* Ansicht für ein einzelnes Dashboard *@
+
+@model KPI_Dashboard.Models.Dashboard
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@section Scripts{
+    <script src="~/js/dashboard.js" type="text/javascript" asp-append-version="true"></script>
+}
+
+@section Heading {
+    @Html.DisplayFor(d => d.title)
+}
+
+@section Settings {
+    <a href="/settings/@Model.id">
+        <div class="settings-button glyphicon glyphicon-cog"></div>
+    </a>
+}
+
+@* Einbinden der CSS Datei*@
+<link rel="stylesheet" href="~/css/kpi.css" type="text/css" asp-append-version="true" />
+
+@* HTML für das Gerüst der Sicht *@
+<div class="container-fluid grid">
+    <div class="row align-items-center grid-row-heading grid-heading">
+        <div class="col-lg-2 grid-text-heading">
+            Produktionszelle
+        </div>
+        <div class="col-lg-2 grid-text-heading">
+            <div>Leistungsgrad</div>
+        </div>
+        <div class="col-lg-2 grid-text-heading">
+            <div>Qualitätsgrad</div>
+        </div>
+        <div class="col-lg-2 grid-text-heading">
+            <div>Verfügbarkeit</div>
+        </div>
+        <div class="col-lg-2 grid-text-heading-oee">
+            <div>GAE</div>
+        </div>
+    </div>
+
+    @* Erstellt für jede Produktionszelle in der Konfiguration eine Anzeige *@
+    @{ var i = 1;}
+    @foreach (var item in Model.cells)
+    {
+        <div class="row align-items-center grid-row">
+            <div class="col-lg-2 grid-text-row">
+                <div id="@Html.DisplayFor(modelItem => item)" class="grid-cell">@Html.DisplayFor(modelItem => item)</div>
+            </div>
+            <div id="performance@(i)-col" class="col-lg-2 col">
+                <div id="performance@(i)" class="block-indicator"><div class="loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div></div>
+            </div>
+            <div id="quality@(i)-col" class="col-lg-2 col">
+                <div id="quality@(i)" class="block-indicator"></div>
+            </div>
+            <div id="availability@(i)-col" class="col-lg-2 col">
+                <div id="availability@(i)" class="block-indicator"></div>
+            </div>
+            <div id="oee@(i)-col" class="col-lg-2 col">
+                <div id="oee@(i)" class="block-indicator"></div>
+            </div>
+        </div>
+        { i++; }
+    }
+</div>

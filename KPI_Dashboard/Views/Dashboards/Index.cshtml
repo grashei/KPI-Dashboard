@@ -1,0 +1,55 @@
+﻿@* Stellt die Übersicht für alle Dashboards dar *@
+
+@model IEnumerable<KPI_Dashboard.Models.Dashboard>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Scripts{
+
+}
+
+@section Heading {
+    Dashboards
+}
+
+<link rel="stylesheet" href="~/css/dashboards.css" type="text/css" asp-append-version="true" />
+
+<div class="container-fluid">
+    <div class="tile-wrapper">
+        <div class="tile-container">
+            <div class="row tile-row">
+                <a href="Dashboards/New">
+                    <div class="dashboard-tile dashboard-tile-new col-lg-12">
+                        <div class="dashboard-name">
+                            <div class="glyphicon glyphicon-plus"></div>
+                        </div>
+
+                        <div class="dashboard-title">
+                            Dashboard hinzufügen
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+            @{ var i = 0;}
+            @foreach (var item in Model)
+            {
+                <a href="/Dashboards/Dashboard/@Model.ElementAt(i).id">
+                    <div class="dashboard-tile col-lg-5 @(i % 2 == 1 ? "col-lg-offset-2" : "")">
+                        <div class="glyphicon glyphicon-dashboard"></div>
+                        <div class="dashboard-name">
+                            @Model.ElementAt(i).name
+                        </div>
+                        <div class="dashboard-title">
+                            @Model.ElementAt(i).title
+                        </div>
+                    </div>
+                </a>
+                { i++; }
+            }
+        </div>
+    </div>
+</div>
